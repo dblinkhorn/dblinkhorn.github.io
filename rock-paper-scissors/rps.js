@@ -34,9 +34,34 @@ scissors.addEventListener("click", function () {
     playRound(playerSelection);
 });
 
+// function to alert player of result of game once either player reaches 5 points
+function checkWinner(pScore, cScore) {
+
+    function resetScores() {
+        computerScore = 0;
+        document.getElementById("computer-score").innerHTML = `<br>${computerScore}`;
+        playerScore = 0;
+        document.getElementById("player-score").innerHTML = `<br>${playerScore}`;
+    }
+
+    if (pScore === 5) {
+            setTimeout(function(){document.getElementById("status").innerHTML = "Congratulations, you defeated the computer!"}, 1500);
+            resetScores();
+        }
+    if (cScore === 5) {
+            setTimeout(function(){document.getElementById("status").innerHTML = "Sorry, but the computer has defeated you!"}, 1500);
+            resetScores()
+        }
+
+        console.log(`resetScores computer score = ${computerScore}.`);
+        console.log(`resetScores player score = ${playerScore}.`);
+    }
 
 // function that determines outcome of the round
 function playRound(playerSelection) {
+
+    console.log(`playRound computer score = ${computerScore}.`);
+    console.log(`playRound player score = ${playerScore}.`);
 
     // function to select computer's play
     function computerPlay() {
@@ -83,4 +108,6 @@ function playRound(playerSelection) {
         // let player know if it's a tie. score doesn't change
         document.getElementById("status").innerHTML = `<p>The computer also chose ${computerSelection}.<br><br><br>Let's re-play this round...</p>`;
     }
+
+    checkWinner(playerScore, computerScore);
 }
