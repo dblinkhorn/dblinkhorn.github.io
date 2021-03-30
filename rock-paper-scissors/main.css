@@ -3,17 +3,26 @@
     margin: 0;
 }
 
+html,
+body {
+    box-sizing: border-box;
+}
+
 .container {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 140px 300px 120px auto;
+    grid-template-rows: 192px 312px 203px auto;
     font-family: 'Press Start 2P', cursive;
     color: #DDD;
     background-color: #6e7c7c;
     justify-items: center;
     min-height: 100vh;
+    padding: 0;
+    margin: 0;
 }
+
  .header {
+     margin-top: 50px;
      grid-column: 1/2;
      grid-row: 1/2;
      display: grid;
@@ -28,11 +37,12 @@
      border-style: solid;
      border-width: 1px;
      border-color: #000;
-     margin-top: 40px;
+     height: 140px;
  }
 
  .status {
-     margin-top: 40px;
+     display: grid;
+     margin-top: 50px;
      grid-row: 2/3;
      padding: 20px;
      background-color: #c8c6a7;
@@ -43,10 +53,11 @@
      box-shadow: 7px 7px 0 0 #000;
      font-size: 1.5em;
      color: #000;
+     height: 220px;
  }
 
  .buttons {
-     margin-top: 40px;
+     margin-top: 50px;
      grid-row: 3/4;
      display: flex;
      justify-content: space-between;
@@ -56,7 +67,7 @@
      font-weight: bold;
      font-size: 1.2em;
      color: #DDD;
-     height: 200px;
+     height: 160px;
  }
 
  img {
@@ -78,22 +89,16 @@
     transition: all 0.7s ease;
     padding-top: 20px;
     padding-bottom: 20px;
-    height: 120px;
- }
-
- a {
-     color: #DDD;
-     text-decoration: none;
+    color: #DDD;
+    text-decoration: none;
  }
 
  .score {
      grid-row: 4/5;
      display: flex;
      justify-content: space-between;
-     margin-top: 100px;
-     align-items: center;
      text-align: center;
-     padding: 20px;
+     margin-top: 75px;
      width: 800px;
      color: #000;
      font-weight: bold;
@@ -101,9 +106,8 @@
 
  .player,
  .computer {
-    font-size: 1.5em;
-    padding: 20px;
-    text-shadow: 2px 2px 2px #666;
+     font-size: 1.5em;
+     text-shadow: 2px 2px 2px #666;
  }
 
  .grow {
@@ -118,4 +122,9 @@
 .grow:active {
     transform: scale(.99);
     box-shadow: 7px 7px 0 0 #000;
+}
+
+a {
+    text-decoration: none;
+    color: #DDD;
 }
