@@ -45,11 +45,11 @@ function checkWinner(pScore, cScore) {
     }
 
     if (pScore === 5) {
-            setTimeout(function(){document.getElementById("status").innerHTML = "Congratulations, you defeated the computer!"}, 1500);
+            setTimeout(function(){document.getElementById("status").innerHTML = "Congratulations, you defeated the computer!<br><br><br>To play again, choose a weapon below."}, 1500);
             resetScores();
         }
     if (cScore === 5) {
-            setTimeout(function(){document.getElementById("status").innerHTML = "Sorry, but the computer has defeated you!"}, 1500);
+            setTimeout(function(){document.getElementById("status").innerHTML = "Sorry, but the computer has defeated you!<br><br><br>To play again, choose a weapon below."}, 1500);
             resetScores()
         }
 
