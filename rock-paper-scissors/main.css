@@ -6,12 +6,12 @@
 .container {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 140px 300px 120px auto 40px;
+    grid-template-rows: 140px 300px 120px auto;
     font-family: 'Press Start 2P', cursive;
-    color: #CCC;
+    color: #DDD;
     background-color: #6e7c7c;
     justify-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
  .header {
      grid-column: 1/2;
@@ -55,7 +55,7 @@
      border-color: #FFF;
      font-weight: bold;
      font-size: 1.2em;
-     color: #FFF;
+     color: #DDD;
      height: 200px;
  }
 
@@ -82,7 +82,7 @@
  }
 
  a {
-     color: #FFF;
+     color: #DDD;
      text-decoration: none;
  }
 
