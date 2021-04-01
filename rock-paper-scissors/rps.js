@@ -88,7 +88,7 @@ function disableButtons() {
 function enableButtons() {
     document.getElementById('rock').style.pointerEvents = 'auto';
     document.getElementById('paper').style.pointerEvents = 'auto';
-    document.getElementById('scissors').style.pointerEvents = 'auto'; 
+    document.getElementById('scissors').style.pointerEvents = 'auto';
 }
 
 
@@ -105,7 +105,7 @@ function checkWinner(pScore, cScore) {
     if (cScore === 5) {
         disableButtons();
         document.getElementById("status-top").innerHTML = `${playerSelection} beats your ${computerSelection}.`;
-        document.getElementById("status-middle").innerHTML = "<strong>The computer wins the game!</strong><br><br><button class='grow' id='play-again'>PLAY AGAIN?</button><";
+        document.getElementById("status-middle").innerHTML = "<strong>The computer wins the game!</strong><br><br><button class='grow' id='play-again'>PLAY AGAIN?</button>";
         document.getElementById("status-bottom").innerHTML = "";
     }
         console.log(`resetScores computer score = ${computerScore}.`);
