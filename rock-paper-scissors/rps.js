@@ -34,44 +34,26 @@ scissors.addEventListener("click", function () {
     playRound(playerSelection);
 });
 
+// variable to store where play again button will be inserted at the end of the game
 let playAgain = document.getElementById("status-middle");
-    playAgain.addEventListener("click", function () {
+
+// if playAgain is clicked
+playAgain.addEventListener("click", function () {
+    // insert the following html into respective elements
     document.getElementById("status-top").innerHTML = "<p><center>Human vs machine!</center></p>";
     document.getElementById("status-middle").innerHTML = "<p><center>First one to 5 points wins.</center></p>";
     document.getElementById("status-bottom").innerHTML = "<p><center>Select your weapon below.</center></p>";
+
+    // if player clicks play again, reset the scores
     resetScores();
 })
-
-
-// function to perform typewriter text effect on status updates
-
-// variables used function
-// var string1 = "this should be the text of string1";
-// var string2 = "this should be the text of string2";
-// var i = 0;
-// var j = 0;
-// var speed = 20; // delay in miliseconds between each letter being added
-
-// function typeWriter(string, element, counter) {
-//   setTimeout(()=> {
-
-//   if (counter < string.length) {
-//     document.getElementById(element).innerHTML += string.charAt(counter);
-//     counter++;
-//     typeWriter(string, element, counter)
-//   }
-//   }, 20)
-// }
-
-
-// typeWriter(string1, "typewriterDiv1", i);
-// typeWriter(string2, "typewriterDiv2", j);
 
 // variables to use in declareWinner function depending on round winner
 winResult = "You won!"
 loseResult = "You lost..."
 winMessage = "Keep it up!"
 loseMessage = "Better luck next round!"
+
 
 // function used in main playRound function to avoid lots of repeat code
 function declareWinner(result, message) {
@@ -95,34 +77,37 @@ function playerWin() {
 
 }
 
+// disables buttons after game is finished (someone reaches 5 points)
+function disableButtons() {
+    document.getElementById('rock').style.pointerEvents = 'none';
+    document.getElementById('paper').style.pointerEvents = 'none';
+    document.getElementById('scissors').style.pointerEvents = 'none';
+}
+
+// re-enables buttons if player clicks 'play again' button
+function enableButtons() {
+    document.getElementById('rock').style.pointerEvents = 'auto';
+    document.getElementById('paper').style.pointerEvents = 'auto';
+    document.getElementById('scissors').style.pointerEvents = 'auto'; 
+}
+
 
 // function to alert player of result of game once either player reaches 5 points
 function checkWinner(pScore, cScore) {
 
     if (pScore === 5) {
-        setTimeout( function() {
-            document.getElementById("status-top").innerHTML = `Your ${playerSelection} beats ${computerSelection}.<br><br>You won the game!!`;
-        }, 1500);
-        setTimeout( function() {
-            document.getElementById("status-middle").innerHTML = "<center><button class='grow' id='play-again'>PLAY AGAIN?</button></center>";
-        }, 1500);
-        setTimeout( function() {
-            document.getElementById("status-bottom").innerHTML = "";
-        }, 1500);
+        disableButtons();
+        document.getElementById("status-top").innerHTML = `Your ${playerSelection} beats ${computerSelection}.`;
+        document.getElementById("status-middle").innerHTML = "<strong>You win the game!</strong><br><br><button class='grow' id='play-again'>PLAY AGAIN?</button>";
+        document.getElementById("status-bottom").innerHTML = "";
     }
 
     if (cScore === 5) {
-        setTimeout( function() {
-            document.getElementById("status-top").innerHTML = `The computer's ${computerSelection} beats ${playerSelection}.<br><br>You lost the game...`;
-        }, 1500);
-        setTimeout( function() {
-            document.getElementById("status-middle").innerHTML = "<center><button class='grow' id='play-again'>PLAY AGAIN?</button></center>";
-        }, 1500);
-        setTimeout( function() {
-            document.getElementById("status-bottom").innerHTML = "";
-        }, 1500);
+        disableButtons();
+        document.getElementById("status-top").innerHTML = `${playerSelection} beats your ${computerSelection}.`;
+        document.getElementById("status-middle").innerHTML = "<strong>The computer wins the game!</strong><br><br><button class='grow' id='play-again'>PLAY AGAIN?</button><";
+        document.getElementById("status-bottom").innerHTML = "";
     }
-
         console.log(`resetScores computer score = ${computerScore}.`);
         console.log(`resetScores player score = ${playerScore}.`);
 }
@@ -133,6 +118,8 @@ function resetScores() {
     document.getElementById("computer-score").innerHTML = `<br>${computerScore}`;
     playerScore = 0;
     document.getElementById("player-score").innerHTML = `<br>${playerScore}`;
+    // re-enable the  buttons on new game
+    enableButtons();
 }
 
 // function that determines outcome of the round
@@ -174,5 +161,6 @@ function playRound(playerSelection) {
         document.getElementById("status-bottom").innerHTML = `<p>Choose your weapon below.`;
     }
 
+    // checks at the end of each round to see if either play has 5 points, the win condition
     checkWinner(playerScore, computerScore);
 }
