@@ -48,12 +48,32 @@ playAgain.addEventListener("click", function () {
     resetScores();
 })
 
-// variables to use in declareWinner function depending on round winner
+// variables to use in declareWinner function depending on round winner below
 winResult = "You won!"
 loseResult = "You lost..."
 winMessage = "Keep it up!"
 loseMessage = "Better luck next round!"
 
+// variables used in typeWriter function below
+var string = "ROCK, PAPER, SCISSORS!";
+var i = 0;
+var speed = 20;
+
+
+// function to give header text a typewriter effect on page load
+function typeWriter(string, element, counter) {
+  setTimeout(()=> {
+
+  if (counter < string.length) {
+    document.getElementById(element).innerHTML += string.charAt(counter);
+    counter++;
+    typeWriter(string, element, counter)
+  }
+  }, 75)
+}
+
+// type out the header text on page load
+typeWriter(string, "header", i);
 
 // function used in main playRound function to avoid lots of repeat code
 function declareWinner(result, message) {
@@ -88,7 +108,7 @@ function disableButtons() {
 function enableButtons() {
     document.getElementById('rock').style.pointerEvents = 'auto';
     document.getElementById('paper').style.pointerEvents = 'auto';
-    document.getElementById('scissors').style.pointerEvents = 'auto';
+    document.getElementById('scissors').style.pointerEvents = 'auto'; 
 }
 
 
@@ -99,14 +119,14 @@ function checkWinner(pScore, cScore) {
         disableButtons();
         document.getElementById("status-top").innerHTML = `Your ${playerSelection} beats ${computerSelection}.`;
         document.getElementById("status-middle").innerHTML = "<strong>You win the game!</strong><br><br><button class='grow' id='play-again'>PLAY AGAIN?</button>";
-        document.getElementById("status-bottom").innerHTML = "";
+        document.getElementById("status-bottom").innerHTML = " ";
     }
 
     if (cScore === 5) {
         disableButtons();
         document.getElementById("status-top").innerHTML = `${playerSelection} beats your ${computerSelection}.`;
         document.getElementById("status-middle").innerHTML = "<strong>The computer wins the game!</strong><br><br><button class='grow' id='play-again'>PLAY AGAIN?</button>";
-        document.getElementById("status-bottom").innerHTML = "";
+        document.getElementById("status-bottom").innerHTML = " ";
     }
         console.log(`resetScores computer score = ${computerScore}.`);
         console.log(`resetScores player score = ${playerScore}.`);

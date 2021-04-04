@@ -10,8 +10,8 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 192px 312px 203px auto;
+    grid-template-columns: 100vw;
+    grid-template-rows: 192px 312px 203px calc(100% - 707px);
     font-family: 'Press Start 2P', cursive;
     color: #DDD;
     background-color: #6e7c7c;
