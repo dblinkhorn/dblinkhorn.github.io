@@ -33,7 +33,7 @@
                                 <feComponentTransfer>
                                     <feFuncA type="linear" slope="0.5"/> <!-- slope is the opacity of the shadow -->
                                 </feComponentTransfer>
-                                <feMerge> 
+                                <feMerge>
                                     <feMergeNode/> <!-- this contains the offset blurred image -->
                                     <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
                                 </feMerge>
@@ -49,7 +49,7 @@
                                 <feComponentTransfer>
                                     <feFuncA type="linear" slope="0.5"/>
                                 </feComponentTransfer>
-                                <feMerge> 
+                                <feMerge>
                                     <feMergeNode/>
                                     <feMergeNode in="SourceGraphic"/>
                                 </feMerge>
@@ -64,7 +64,7 @@
                 <div class="get-grid-size" id="get-grid-size">
                     <form name="grid-size">
                         <label for="grid-size-input">SET RESOLUTION TO BEGIN:</label><br>
-                        <input type="text" name="grid-size-input" id="grid-size" placeholder="Default: 50, Maximum: 100"><br>
+                        <input type="text" name="grid-size-input" id="grid-size" placeholder="Maximum: 100"><br>
                         <input type="button" class="button" value="Submit" onclick="gridSizeInput()">
                     </form>
                 </div>
