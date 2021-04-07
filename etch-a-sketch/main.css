@@ -1,0 +1,148 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    box-sizing: border-box;
+    background-color: #FFF;
+    font-family: sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 30px 800px auto;
+    color: #DDD;
+    background-color: ivory;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.etch-container {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50px;
+}
+
+.etch-main {
+    background-color: red;
+    width: 800px;
+    height: 800px;
+    box-shadow: 8px 8px 8px 2px rgba(0, 0, 0, 0.5);
+    border-style: hidden;
+    border-radius: 10px;
+}
+
+.etch-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    font-family: 'Pacifico', cursive;
+    font-size: 3em;
+    color: gold;
+}
+
+.magic,
+.screen {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 0.5em;
+    color: gold;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.etch-middle {
+    display: flex;
+    flex-direction: row;
+}
+
+.etch-left {
+    width: 100px;
+}
+
+.etch-screen {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: grey;
+    width: 600px;
+    height: 600px;
+    border-style: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px #000 inset;
+}
+
+.newDiv {
+    display: flex;
+    flex-grow: 1;
+}
+
+.etch-right {
+    width: 100px;
+}
+
+.etch-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.user-input {
+    display: flex;
+    grid-row: 2/3;
+    grid-column:2/3;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 50px;
+    width: 250px;
+    color: #000;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: none;
+    border-style: solid;
+    border-color: #000;
+    outline: none;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.5);
+    width: 200px;
+  }
+
+.button,
+.button:focus {
+    background-color: #333;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    outline: none;
+    margin-top: 20px;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.5);
+}
+
+.button:active {
+    border: none;
+    outline: none;
+}
+
+.button:hover {
+    background-color: gray;
+}
