@@ -111,3 +111,11 @@ header {
   background-color: darkOrange;
   border-color: #FFF;
 }
+
+.click {
+  transition: all .085s ease-in-out;
+}
+
+.click:active {
+ transform: scale(0.95);
+}
