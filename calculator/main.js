@@ -30,12 +30,12 @@ let needsReset = false;
 // stores calculator display element
 let display = document.getElementById("display");
 
-// stores equal button element
+// stores equal button element and adds click event to run operate function
 let equal = document.getElementById("equal").addEventListener("click", function () {
   operate(userOperator, firstNumber, secondNumber);
 });
 
-// stores decimal button element
+// stores decimal button element and adds click event to run addDecimal function
 let decimal = document.getElementById("decimal").addEventListener("click", function () {
   addDecimal();
 })
@@ -66,6 +66,22 @@ operatorButtons.forEach( function (operator) {
     addUserOperator(operator.textContent)
   });
 });
+
+// add window event listener to capture keyboard key presses and call getKeyboardPress function
+window.addEventListener("keydown", getKeyboardPress);
+
+// determines action based on a keyboard key press
+function getKeyboardPress (press) {
+  if (press.key >= 0 && press.key <= 9) { addUserNumber(press.key); }
+  if (press.key === "/") { addUserOperator(press.key); }
+  if (press.key === "*") { addUserOperator(press.key); }
+  if (press.key === "-") { addUserOperator(press.key); }
+  if (press.key === "+") { addUserOperator(press.key); }
+  if (press.key === ".") { addDecimal(); }
+  if (press.key === "Enter" || press.key === "=") { operate(userOperator, firstNumber, secondNumber); }
+  if (press.key === "Backspace") { displayDelete(); }
+  if (press.key === "Escape") { resetDisplay(); }
+  }
 
 // function to add two numbers
 let add = function add (x, y) {
@@ -250,7 +266,7 @@ function addDecimal() {
     secondNumber += ".";
     // and display it on the calculator screen
     display.textContent += ".";
-    // and break out of the function so it doesn't add a decimal to firstNumber by executing code below
+    // and break out of the function so it doesn't add a decimal to firstNumber by executing key below
     return;
   }
   // if function is still executing it means firstNumber can take a decimal
