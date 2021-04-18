@@ -14,6 +14,7 @@
 // when user hits equals key, needs a function that will take the two numbers and the operator and return the answer and display it
 // needs a function that will clear the screen when necessary or when user clicks button
 // needs a function that will delete one item from the screen at a time
+// user must be able to use floating point numbers in the operations
 
 
 // stores first user number
@@ -33,6 +34,11 @@ let display = document.getElementById("display");
 let equal = document.getElementById("equal").addEventListener("click", function () {
   operate(userOperator, firstNumber, secondNumber);
 });
+
+// stores decimal button element
+let decimal = document.getElementById("decimal").addEventListener("click", function () {
+  addDecimal();
+})
 
 // array of each number button
 let numberButtons = document.querySelectorAll("#number");
@@ -83,6 +89,9 @@ let divide = function divide (x, y) {
 
 // does the math using the user selected operator and two numbersw
 function operate (operator, firstNumber, secondNumber) {
+
+  console.log(firstNumber);
+
   // if operator is +, run add function
   if (operator === "+") {
     // display the rounded answer on the calculator display
@@ -131,6 +140,7 @@ function resetValues() {
 // resets the display back to default of "0"
 function resetDisplay() {
   display.textContent = "0";
+  resetValues();
 }
 
 // deletes a single character at a time from the display text
@@ -139,7 +149,7 @@ function displayDelete() {
   display.textContent = display.textContent.toString().slice(0, -1);
   // if after deleting a character there is nothing on the screen
   if (display.textContent === "") {
-    // then add a zero so there's always a "0" displayed, maintains the default state of the screen
+    // then reset the display back to default which is just a "0"
     resetDisplay();
   }
 }
@@ -147,12 +157,12 @@ function displayDelete() {
 // adds the user number to the variables used in operate function and shows on caculator display
 function addUserNumber(number) {
   // if needsReset is true, for example, after a previous completed operate function
-  if (needsReset === true) {
+  if (needsReset === true && !firstNumber.includes(".")) {
     // reset the display
     resetDisplay();
   }
   // if the only number on the screen is 0 (default state)
-  if (display.textContent === "0") {
+  if (display.textContent === "0" && !firstNumber.includes(".")) {
     // delete that 0 so the user number replaces it instead of just adds to it (e.g. 5 instead of 05)
     displayDelete();
   }
@@ -178,9 +188,7 @@ function addUserNumber(number) {
 function addUserOperator(operator) {
   // checks whether user has selected an operator, or if there's no firstNumber set, or if it's still "0"
   if (userOperator !== "" || firstNumber === "" || firstNumber === "0") {
-    // // in those cases make sure the calculator display continues to show "0"
-    // display.textContent = "0";
-    // and break out of function
+    // in those cases, break out of function
     return;
   }
   // if the user has not set a second number, for example, they haven't selected an operator yet
@@ -196,6 +204,9 @@ function addUserOperator(operator) {
 
 // makes sure that no leading zeroes remain on calculator display
 function checkForLeadingZero() {
+  if (firstNumber.includes(".")) {
+    return;
+  }
   // stores the calculator display text to a string
   displayTextToString = display.textContent.toString();
   // if the first character of that string is "0"
@@ -203,4 +214,47 @@ function checkForLeadingZero() {
     // then delete it
     display.textContent = display.textContent.toString().slice(1);
   }
+}
+
+// adds a decimal to the firstNumber or secondNumber
+function addDecimal() {
+  // if needsReset is true, for example, after a previous completed operate function
+  if (needsReset === true) {
+    // reset the display
+    resetDisplay();
+  }
+  // check to make sure the firstNumber doesn't already have a decimal and that userOperator hasn't been selected by user yet
+  if (firstNumber.includes(".") && userOperator === "") {
+    // if either is true then clicking the decimal button shouldn't add a decimal (it would be more than one)
+    // break out of function
+    return;
+  }
+  // if secondNumber already has a decimal...
+  if (secondNumber.includes(".")) {
+    // then break out of function, don't add another one
+    return;
+  }
+  // if secondNumber doesn't already have a decimal and if the userOperator has been set by user
+  if (!secondNumber.includes(".") && userOperator !== "") {
+    // but first, if firstNumer has been set and secondNumber hasn't yet
+    if (firstNumber !== "" && secondNumber === "") {
+      // then set it to a decimal
+      secondNumber += "."
+      // and show "0." on the calculator display to match with when a user starts the first number with a decimal
+      // (always adds a leading zero whenever user picks a decimal as first part of either number)
+      display.textContent += "0.";
+      // break out of function
+      return;
+    }
+    // then add the decimal to secondNumber...
+    secondNumber += ".";
+    // and display it on the calculator screen
+    display.textContent += ".";
+    // and break out of the function so it doesn't add a decimal to firstNumber by executing code below
+    return;
+  }
+  // if function is still executing it means firstNumber can take a decimal
+  firstNumber += ".";
+  // and show it on the calculator display
+  display.textContent += ".";
 }
