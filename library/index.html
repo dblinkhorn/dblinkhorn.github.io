@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>My Library</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="main.css">
+  </head>
+
+  <body>
+    <div class="container" id="container">
+      <header id="header">
+        <h1 id="pageTitle">My Library</h1>
+        <button class="plus" id="newBookButton">+</button>
+      </header>
+      <div class="library" id="library">
+
+        <!-- library div where new book cards will be added -->
+
+        <!-- <h1>There are currently no books in your library!</h1> -->
+
+      </div>
+    </div>
+
+    <!-- Add new book form popup, hidden until user clicks "Add New Book" button -->
+
+    <div class="popupContainer" id="popupContainer">
+      <div class="newBookPopup" id="newBookPopup">
+        <form class="newBookForm" id="newBookForm">
+          <ul class="formList" id="formList">
+          <li><input id="title" type="text" placeholder="Book title" name="title" required></li>
+          <li><input id="author"  type="text" placeholder="Author name" name="author" required></li>
+          <li><input id="pages" type="number" placeholder="Number of pages" name="pages" min="1" max="99999" required></li>
+          <li><input type="checkbox" id="checkRead"><label for="checkRead"> Read it?</label></li>
+        </ul>
+        <div class="buttons" id="formButtons">
+          <input class="button" id ="send" type="submit" value="Add Book" />
+          <button type="button" class="cancel" id="cancel">Cancel</button>
+        </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- End of new book form popup -->
+
+    <script src="main.js"></script>
+  </body>
+
+</html>

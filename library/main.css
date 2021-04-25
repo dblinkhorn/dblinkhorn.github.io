@@ -1,0 +1,174 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  background-color: #666;
+  font-family: sans-serif;
+  color: white;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 100vw;
+  grid-template-rows: 100px auto;
+  justify-items: center;
+}
+
+header {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  background-color: #222;
+  box-shadow: 5px 5px 5px 0px rbg(0, 0, 0, 0.7);
+}
+
+h1 {
+  text-shadow: 4px 4px 3px black;
+  font-size: 4em;
+  margin-right: 50px;
+  margin-left: 30px;
+}
+
+.plus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 75px;
+  height: 75px;
+  padding-bottom: 10px;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 5em;
+  background-color: #007000;
+}
+
+.plus:hover {
+  background-color: #009000;
+}
+
+.library {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  height: auto;
+  width: 100%;
+}
+
+.bookCard {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+  background-color: #444;
+  border: 2px solid white;
+  padding: 20px;
+  margin: 50px;
+  width: 350px;
+  font-size: 1.5em;
+}
+
+ul {
+  list-style-type: none;
+  line-height: 65px;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  padding-top: 15px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.newBookButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popupContainer {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.newBookPopup {
+  display: none;
+  position: fixed;
+  left: 30%;
+  top: 20%;
+  border: 2px solid white;
+  z-index: 9;
+  color: white;
+}
+
+.newBookForm {
+  width: 480px;
+  padding: 20px;
+  background-color: #444;
+  font-size: 2em;
+}
+
+input[type=text],
+input[type=number] {
+  border: 1px solid white;
+  height: 60px;
+  padding: 20px;
+  outline: none;
+  width: 400px;
+  box-sizing: border-box;
+  font-size: 0.75em;
+}
+
+button,
+.button,
+input[type=submit] {
+  background-color: #333;
+  width: 150px;
+  height: 50px;
+  color: white;
+  border: 2px solid white;
+  outline: none;
+  font-weight: bold;
+  font-size: 0.75em
+}
+
+.button:hover {
+  background-color: #888;
+}
+
+.remove:hover,
+.cancel:hover {
+  background-color:firebrick;
+}
+
+.haveRead {
+  background-color: #007000;
+}
+
+.haveRead:hover {
+  background-color: #009000;
+}
+
+.notRead:hover {
+  background-color: #888;
+}
+
+.attributes {
+  margin-bottom: 30px;
+}
+
