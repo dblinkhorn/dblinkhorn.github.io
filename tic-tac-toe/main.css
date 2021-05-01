@@ -1,0 +1,81 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: black;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 100vw;
+  grid-template-rows: 150px 80px 450px calc(100vh - 680px);
+  justify-content: center;
+}
+
+.title {
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  justify-content: center;
+  align-content: center;
+  font-size: 40px;
+  color: whiteSmoke;
+}
+
+.announcements {
+  display: grid;
+  justify-content: center;
+  color: whiteSmoke;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.backfill {
+  grid-column: 1/2;
+  grid-row: 3/4;
+  background-color: whiteSmoke;
+  width: 450px;
+  height: 450px;
+  justify-self: center;
+  display: grid;
+}
+
+.gameboard {
+  grid-column: 1/2;
+  grid-row: 3/4;
+  grid-template-columns: 150px 150px 150px;
+  grid-template-rows: 150px 150px 150px;
+  grid-gap: 6px;
+  display: grid;
+  justify-self: center;
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  font-size: 6em;
+  color: whiteSmoke;
+  cursor: pointer;
+}
+
+.play-again {
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 4/5;
+  padding-top: 50px;
+  justify-content: center;
+  background-color: black;
+  font-size: 40px;
+  font-weight: bold;
+  color: whiteSmoke;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
