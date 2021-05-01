@@ -76,6 +76,10 @@ body {
   cursor: pointer;
 }
 
+.play-again:hover {
+  font-size: 45px;
+}
+
 .hidden {
   display: none;
 }

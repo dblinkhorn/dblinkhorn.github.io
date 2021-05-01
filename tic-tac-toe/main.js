@@ -7,10 +7,9 @@ const gameBoard = () => {
   // stores all game board grid squares
   let _gridSquares = document.querySelectorAll(".square");
 
+  // adds an event listener to each square div to run _updateGameBoard function
   _gridSquares.forEach( function (square) {
-    // will detect a user click and
     square.addEventListener("click", function() {
-      // if clicked, runs handlePlayerMove function
       _updateGameBoard(square.id);
     });
   });
@@ -24,12 +23,10 @@ const gameBoard = () => {
 
   // alternates player's turn as turns are taken
   const _playerToggle = () => {
-    // if markToggle is true...
     if (markToggle) {
       announceDiv.textContent ="Player O's turn";
       playerMark = "X";
       markToggle = false;
-      // ...and if it's false
     } else {
       announceDiv.textContent ="Player X's turn";
       playerMark = "O";
@@ -47,18 +44,17 @@ const gameBoard = () => {
     }
 
     // checks to see if the game has already ended
-    // and if so
     if (gameOver === true) {
-      // break out of function...no more moves handled
+      // if so, break out of function
       return;
     }
 
     // run player toggle to switch whose turn it next round
     _playerToggle();
 
-    // place the player's mark in the clicked position of the gameboard array
+    // place the player's mark in the gameboard array which corresponds to array position
     _gameBoardArray[Number(playerMove)] = playerMark;
-    // change the grid square on the page to show the mark
+    // change the grid square on the index page to show the mark
     _gridSquares.item(playerMove).textContent = playerMark;
     // add the clicked class so clicking it again will have no effect
     _gridSquares.item(playerMove).classList.add("clicked");
@@ -68,12 +64,11 @@ const gameBoard = () => {
 
   // booloean to track whether game has a winner or draw
   let gameOver = false;
+  
   // stores the div where the play again message will appear if there is a winner or draw
   // this div starts out hidden until gameOver is set to true (someone has won or draw)
   let playAgainDiv = document.getElementById("play-again");
-  // add a listener to detect a click
   playAgainDiv.addEventListener("click", () => {
-    // and if so, refresh the page
     location.reload();
   })
 
@@ -91,7 +86,6 @@ const gameBoard = () => {
     }
     // when a winner/draw has been delcared, un-hide the play again div
     playAgainDiv.classList.remove("hidden");
-    // set gameOver to true
     gameOver = true;
   }
 
@@ -207,5 +201,4 @@ const gameBoard = () => {
   }
 }
 
-// instantiate main game object (gameBoard) to access its public variables and functions
 let game = gameBoard();
