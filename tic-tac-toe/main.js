@@ -97,107 +97,96 @@ const gameBoard = () => {
       _declareWinner("tie");
     }
 
-    // horizontal wins
+    var gridSize = 3;
 
-    if (
-      _gameBoardArray[0] === "X" &&
-      _gameBoardArray[1] === "X" &&
-      _gameBoardArray[2] === "X"
-    ) { _declareWinner("X"); return; };
+    // checks for horizontal win
+    const _checkRows = (_gameBoardArray) => {
+      var currentTestRow = [];
+      var currentRowFirstIndex = 0;
+      var nextRowFirstIndex = 0;
+      
+        for (let row = 1; row <= gridSize; row++) {
+          currentRowFirstIndex = nextRowFirstIndex;
+          // loop through each index of a row, and add it to the current test row array
+          for (let index = currentRowFirstIndex; index < currentRowFirstIndex + gridSize; index++) {
+            currentTestRow.push(_gameBoardArray[index]);
+          }
+          // check if each value in the current test row array are all the same
+          if (currentTestRow.every(mark => mark === "X")) {
+            _declareWinner("X");
+            return;
+          } else if (currentTestRow.every(mark => mark === "O")) {
+            _declareWinner("O");
+            return;
+          } else {
+            // if they aren't all the same then clear the array for the next loop through the next row
+            currentTestRow = [];
+            nextRowFirstIndex = currentRowFirstIndex + gridSize;
+          }
+        }
+      }
 
-    if (
-      _gameBoardArray[3] === "X" &&
-      _gameBoardArray[4] === "X" &&
-      _gameBoardArray[5] === "X"
-    ) { _declareWinner("X"); return; };
+    // checks for vertical win
+    const _checkColumns = (_gameBoardArray) => {
+      var currentTestColumn = [];
+      var currentColumnFirstIndex = 0;
+      var nextColumnFirstIndex = 0;
+      
+        for (let column = 1; column <= gridSize; column++) {
+          currentColumnFirstIndex = nextColumnFirstIndex;
+          for (let index = currentColumnFirstIndex; index <= currentColumnFirstIndex + (gridSize * (gridSize - 1)); index += gridSize) {
+            currentTestColumn.push(_gameBoardArray[index]);
+          }
+          // once that is done then check if every value in testRow equals X or O
+          if (currentTestColumn.every(mark => mark === "X")) {
+            _declareWinner("X");
+            return;
+          } else if (currentTestColumn.every(mark => mark === "O")) {
+            _declareWinner("O");
+            return;
+          } else {
+            currentTestColumn = [];
+            nextColumnFirstIndex = currentColumnFirstIndex + 1;
+          }
+        }
+      }
 
-    if (
-      _gameBoardArray[6] === "X" &&
-      _gameBoardArray[7] === "X" &&
-      _gameBoardArray[8] === "X"
-    ) { _declareWinner("X"); return; };
+    // checks for diagonal win
+    const _checkDiagonals = (_gameBoardArray) => {
+      var firstTestDiagonal = [];
+      var secondTestDiagonal = [];
+      var firstDiagonalFirstIndex = 0;
+      var secondDiagonalFirstIndex = (gridSize * gridSize) - gridSize;
+      
+        // first diagonal loop
+        for (let index = firstDiagonalFirstIndex; index < gridSize * gridSize; index += gridSize + 1) {
+          firstTestDiagonal.push(_gameBoardArray[index]);
+        }
 
-    if (
-      _gameBoardArray[0] === "O" &&
-      _gameBoardArray[1] === "O" &&
-      _gameBoardArray[2] === "O"
-    ) { _declareWinner("O"); return; };
+        // second diagonal loop
+        for (let index = secondDiagonalFirstIndex; index >= gridSize - 1; index -= gridSize - 1) {
+          secondTestDiagonal.push(_gameBoardArray[index]);
+        }
 
-    if (
-      _gameBoardArray[3] === "O" &&
-      _gameBoardArray[4] === "O" &&
-      _gameBoardArray[5] === "O"
-    ) { _declareWinner("O"); return; };
+        const _checkTestDiagonal = (testDiagonal) => {
+          if (testDiagonal.every(mark => mark === "X")) {
+            _declareWinner("X");
+          } else if (testDiagonal.every(mark => mark === "O")) {
+            _declareWinner("O");
+          } else {
+            return;
+          }
+        }
+        
+        _checkTestDiagonal(firstTestDiagonal);
+        _checkTestDiagonal(secondTestDiagonal);
 
-    if (
-      _gameBoardArray[6] === "O" &&
-      _gameBoardArray[7] === "O" &&
-      _gameBoardArray[8] === "O"
-    ) { _declareWinner("O"); return; };
+      }
 
-    // vertical wins
+      _checkRows(_gameBoardArray);
+      _checkColumns(_gameBoardArray);
+      _checkDiagonals(_gameBoardArray);
 
-    if (
-      _gameBoardArray[0] === "X" &&
-      _gameBoardArray[3] === "X" &&
-      _gameBoardArray[6] === "X"
-    ) { _declareWinner("X"); return; };
-
-    if (
-      _gameBoardArray[1] === "X" &&
-      _gameBoardArray[4] === "X" &&
-      _gameBoardArray[7] === "X"
-    ) { _declareWinner("X"); return; };
-
-    if (
-      _gameBoardArray[2] === "X" &&
-      _gameBoardArray[5] === "X" &&
-      _gameBoardArray[8] === "X"
-    ) { _declareWinner("X"); return; };
-
-    if (
-      _gameBoardArray[0] === "O" &&
-      _gameBoardArray[3] === "O" &&
-      _gameBoardArray[6] === "O"
-    ) { _declareWinner("O"); return; };
-
-    if (
-      _gameBoardArray[1] === "O" &&
-      _gameBoardArray[4] === "O" &&
-      _gameBoardArray[7] === "O"
-    ) { _declareWinner("O"); return; };
-
-    if (
-      _gameBoardArray[2] === "O" &&
-      _gameBoardArray[5] === "O" &&
-      _gameBoardArray[8] === "O"
-    ) { _declareWinner("O"); return; };
-
-    // horiztonal wins
-
-    if (
-      _gameBoardArray[0] === "X" &&
-      _gameBoardArray[4] === "X" &&
-      _gameBoardArray[8] === "X"
-    ) { _declareWinner("X"); return; };
-
-    if (
-      _gameBoardArray[2] === "X" &&
-      _gameBoardArray[4] === "X" &&
-      _gameBoardArray[6] === "X"
-    ) { _declareWinner("X"); return; };
-
-    if (
-      _gameBoardArray[0] === "O" &&
-      _gameBoardArray[4] === "O" &&
-      _gameBoardArray[8] === "O"
-    ) { _declareWinner("O"); return; };
-
-    if (
-      _gameBoardArray[2] === "O" &&
-      _gameBoardArray[4] === "O" &&
-      _gameBoardArray[6] === "O"
-    ) { _declareWinner("O"); return; };
   }
 }
 
