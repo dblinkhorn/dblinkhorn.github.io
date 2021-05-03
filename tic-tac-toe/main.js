@@ -97,66 +97,45 @@ const gameBoard = () => {
       _declareWinner("tie");
     }
 
-    var gridSize = 3;
+    let gridSize = 3;
+    let spanMaxRow = gridSize;
+    let spanMaxColumn = (gridSize * gridSize);
+    let indexIncrementColumn = 1
+    let loopIncrementRow = 1;
 
     // checks for horizontal win
-    const _checkRows = (_gameBoardArray) => {
-      var currentTestRow = [];
-      var currentRowFirstIndex = 0;
-      var nextRowFirstIndex = 0;
+    const _checkSpan = (_gameBoardArray, spanMax, indexIncrement, loopIncrement) => {
+      let currentTestSpan = [];
+      let currentSpanFirstIndex = 0;
+      let nextSpanFirstIndex = 0;
       
-        for (let row = 1; row <= gridSize; row++) {
-          currentRowFirstIndex = nextRowFirstIndex;
+        for (let span = 1; span <= gridSize; span++) {
+          currentSpanFirstIndex = nextSpanFirstIndex;
           // loop through each index of a row, and add it to the current test row array
-          for (let index = currentRowFirstIndex; index < currentRowFirstIndex + gridSize; index++) {
-            currentTestRow.push(_gameBoardArray[index]);
+          for (let index = currentSpanFirstIndex; index < currentSpanFirstIndex + spanMax; index += loopIncrement) {
+            currentTestSpan.push(_gameBoardArray[index]);
           }
           // check if each value in the current test row array are all the same
-          if (currentTestRow.every(mark => mark === "X")) {
+          if (currentTestSpan.every(mark => mark === "X")) {
             _declareWinner("X");
             return;
-          } else if (currentTestRow.every(mark => mark === "O")) {
+          } else if (currentTestSpan.every(mark => mark === "O")) {
             _declareWinner("O");
             return;
           } else {
             // if they aren't all the same then clear the array for the next loop through the next row
-            currentTestRow = [];
-            nextRowFirstIndex = currentRowFirstIndex + gridSize;
-          }
-        }
-      }
-
-    // checks for vertical win
-    const _checkColumns = (_gameBoardArray) => {
-      var currentTestColumn = [];
-      var currentColumnFirstIndex = 0;
-      var nextColumnFirstIndex = 0;
-      
-        for (let column = 1; column <= gridSize; column++) {
-          currentColumnFirstIndex = nextColumnFirstIndex;
-          for (let index = currentColumnFirstIndex; index <= currentColumnFirstIndex + (gridSize * (gridSize - 1)); index += gridSize) {
-            currentTestColumn.push(_gameBoardArray[index]);
-          }
-          // once that is done then check if every value in testRow equals X or O
-          if (currentTestColumn.every(mark => mark === "X")) {
-            _declareWinner("X");
-            return;
-          } else if (currentTestColumn.every(mark => mark === "O")) {
-            _declareWinner("O");
-            return;
-          } else {
-            currentTestColumn = [];
-            nextColumnFirstIndex = currentColumnFirstIndex + 1;
+            currentTestSpan = [];
+            nextSpanFirstIndex = currentSpanFirstIndex + indexIncrement; // gridSize;
           }
         }
       }
 
     // checks for diagonal win
     const _checkDiagonals = (_gameBoardArray) => {
-      var firstTestDiagonal = [];
-      var secondTestDiagonal = [];
-      var firstDiagonalFirstIndex = 0;
-      var secondDiagonalFirstIndex = (gridSize * gridSize) - gridSize;
+      let firstTestDiagonal = [];
+      let secondTestDiagonal = [];
+      let firstDiagonalFirstIndex = 0;
+      let secondDiagonalFirstIndex = (gridSize * gridSize) - gridSize;
       
         // first diagonal loop
         for (let index = firstDiagonalFirstIndex; index < gridSize * gridSize; index += gridSize + 1) {
@@ -183,8 +162,9 @@ const gameBoard = () => {
 
       }
 
-      _checkRows(_gameBoardArray);
-      _checkColumns(_gameBoardArray);
+      _checkSpan(_gameBoardArray, spanMaxRow, gridSize, loopIncrementRow);
+      _checkSpan(_gameBoardArray, spanMaxColumn, indexIncrementColumn, gridSize)
+      // _checkColumns(_gameBoardArray);
       _checkDiagonals(_gameBoardArray);
 
   }
