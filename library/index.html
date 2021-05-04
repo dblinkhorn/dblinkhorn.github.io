@@ -11,7 +11,7 @@
     <div class="container" id="container">
       <header id="header">
         <h1 id="pageTitle">My Library</h1>
-        <button class="plus" id="newBookButton">+</button>
+        <button class="newBookButton" id="newBookButton">Add New Book</button>
       </header>
       <div class="library" id="library">
 
@@ -27,9 +27,10 @@
     <div class="popupContainer" id="popupContainer">
       <div class="newBookPopup" id="newBookPopup">
         <form class="newBookForm" id="newBookForm">
+          <strong>Add New Book</strong>
           <ul class="formList" id="formList">
           <li><input id="title" type="text" placeholder="Book title" name="title" required></li>
-          <li><input id="author"  type="text" placeholder="Author name" name="author" required></li>
+          <li><input id="author" type="text" placeholder="Author name" name="author" required></li>
           <li><input id="pages" type="number" placeholder="Number of pages" name="pages" min="1" max="99999" required></li>
           <li><input type="checkbox" id="checkRead"><label for="checkRead"> Read it?</label></li>
         </ul>
