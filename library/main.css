@@ -51,6 +51,7 @@ h1 {
   text-shadow: 2px 1px 5px black;
   box-shadow: 2px 1px 6px black;
   background-color: #007000;
+  cursor: pointer;
 }
 
 .newBookButton:hover {
@@ -157,6 +158,7 @@ input[type=submit] {
   font-weight: bold;
   font-size: 0.75em;
   box-shadow: 2px 1px 6px black;
+  cursor: pointer;
 }
 
 .button:hover {
@@ -173,12 +175,14 @@ input[type=submit] {
 .remove {
   text-shadow: 2px 1px 5px black;
   box-shadow: 2px 1px 6px black;
+  cursor: pointer;
 }
 
 .haveRead {
   background-color: #007000;
   text-shadow: 2px 1px 5px black;
   box-shadow: 2px 1px 6px black;
+  cursor: pointer;
 }
 
 .haveRead:hover {
