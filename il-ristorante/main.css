@@ -1,0 +1,143 @@
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 60px calc(100% - 100px) 40px;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.45), 
+    rgba(0, 0, 0, 0.45)),
+    url(static/tuscany-red-hills.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.navigation {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 0px 20px;
+  height: 60px;
+  color: white;
+}
+
+.nav-item {
+  margin: 0px 10px;
+  padding: 20px 0px 0px 0px;
+  height: 100%;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  border-bottom: 2px solid white;
+}
+
+.nav-item:active {
+  border-bottom: 2px solid white;
+}
+
+.clicked {
+  border-bottom: 2px solid goldenRod;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  align-self: center;
+  font-family: 'Italianno', cursive;
+  color: white;
+  font-size: 8vw;
+}
+
+.sub-title {
+  align-self: center;
+  font-family: 'Italianno', cursive;
+  color: white;
+  font-size: 4vw;
+}
+
+.content-container {
+  width: 750px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  margin: 80px 0px;
+  padding: 0px 40px 40px 40px;
+}
+
+hr {
+  color: white;
+  margin: 15px 0px;
+  width: 100%;
+}
+
+.category {
+  font-size: 60px;
+  margin-top: 40px;
+  font-weight: bold;
+  font-family: 'Playball', cursive;
+}
+
+.dish {
+  font-family: 'Playball', cursive;
+  color: white;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.description {
+  color: white;
+  font-size: 15px;
+  padding-left: 20px;
+}
+
+.our-story {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-family: 'Playball', cursive;
+  font-weight: bold;
+  font-size: 4em;
+  margin-top: 20px;
+}
+
+.story {
+  color: white;
+  font-size: 1.25em;
+  text-align: justify;
+}
+
+.content {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  min-height: calc(100vh - 100px);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1/2;
+  grid-row: 3/4;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 0px 10px;
+  height: 40px;
+  color: white;
+  font-size: 0.9em;
+}
