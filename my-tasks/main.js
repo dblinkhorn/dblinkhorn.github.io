@@ -562,6 +562,6 @@ if (projects[0] && projects[0].projectTitle === "Random Tasks") {
     const randomTasksProject = document.getElementById("0").classList.add("clicked");
 }
 
-let projectsDivChildren = document.getElementById("projects").children;
-let targetProjectToHighlightIndex = (selectedProject+1).toString();
-projectsDivChildren[targetProjectToHighlightIndex].classList.add("clicked");
+let projectContainers = document.querySelectorAll(".project-container");
+let targetProjectToHighlightIndex = (selectedProject-1).toString();
+projectContainers[targetProjectToHighlightIndex].classList.add("clicked");
