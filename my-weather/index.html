@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>myWeather</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="main-container" class="main-container">
+    <div id="header-container" class="header-container">
+      <div id="logo-container" class="logo-container">
+        myWeather
+      </div>
+      <div id="search-container" class="search-container">
+        <form>
+          <input type="text" id="search" value="los angeles" placeholder="Enter city name" />
+          <button type="submit" id="submit" class="submit" onclick="getSearch(units)">Get Weather</button>
+        </form>
+      </div>
+      <div id="unit-change-container" class="unit-change-container">
+        <button id="unit-change" class="unit-change">Use Metric</button>
+      </div>
+    </div>
+    <div id="current-container" class="current-container">
+      <div id="current-icon" class="current-icon">
+        test
+      </div>
+      <div id="current-main" class="current-main">
+        <div id="current-city" class="current-city"></div>
+        <div id="current-temperature" class="current-temperature"></div>
+        <div id="current-condition" class="current-condition"></div>
+      </div>
+      <div id="current-stats" class="current-stats">
+        <span id="current-date" class="current-stat current-date"></span>
+        <hr />
+        <span id="current-high" class="current-stat"></span>
+        <span id="current-low" class="current-stat"></span>
+        <span id="current-wind-speed" class="current-stat"></span>
+        <span id="current-humidity" class="current-stat"></span>
+        <span id="current-uvi" class="current-stat"></span>
+      </div>
+    </div>
+    <div id="daily-chart" class="daily-chart">
+      <div id="daily-date" class="stat-container"></div>
+      <div id="high-temps" class="stat-container center"></div>
+      <div id="low-temps" class="stat-container center"></div>
+      <div id="daily-condition" class="stat-container"></div>
+      <div id="daily-wind-speed" class="stat-container"></div>
+      <div id="daily-humidity" class="stat-container"></div>
+      <div id="daily-uv-index" class="stat-container"></div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #bccad6;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 4;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  grid-column: 1;
+  grid-row: 1;
+  padding: 20px;
+  justify-content: space-between;
+  background-color: #667292;
+  height: 60px;
+}
+
+.logo-container {
+  font-size: 50px;
+  color: white;
+}
+
+.search-container {
+  display: flex;
+  place-items: center;
+}
+
+.unit-change-container {
+  display: flex;
+  width: 288px;
+  align-items: center;
+  justify-content: right;
+}
+
+input {
+  height: 42px;
+  font-size: 18px;
+  padding-left: 6px;
+  margin-right: 12px;
+  border: none;
+  background-color: #bccad6;
+}
+
+button {
+  height: 42px;
+  border: none;
+  color: white;
+  font-size: 18px;
+  background-color: #35373d;
+  cursor: pointer;
+}
+
+.submit {
+  width: 140px;
+}
+
+.unit-change {
+  width: 140px;
+}
+
+button:hover {
+  background-color: #363f5e;
+}
+
+.current-container {
+  display: flex;
+  flex-direction: row;
+  place-content: center;
+}
+
+.current-icon {
+  display: flex;
+  place-items: center;
+  margin: 30px;
+}
+
+.current-main {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  margin: 30px;
+  font-weight: bold;
+}
+
+.current-stats {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  justify-content: center;
+}
+
+.current-stat {
+  margin: 5px;
+  font-size: 18px;
+}
+
+hr {
+  height: 1px;
+  background-color: #677285;
+  border-width: 0px;
+  margin-bottom: 8px;
+}
+
+.current-date {
+  font-weight: bold;
+}
+
+.current-city {
+  font-size: 50px;
+}
+
+.current-temperature {
+  font-size: 85px;
+}
+
+.current-condition {
+  font-size: 32px;
+}
+
+.wind-humidity-uvi {
+  margin-top: 4px;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.daily-chart {
+  grid-column: 1;
+  grid-row: 4;
+  display: flex;
+  flex-direction: row;
+  place-content: center;
+  padding: 10px;
+  background-color: #8d9db6;
+}
+
+.daily-condition {
+  display: flex;
+  place-items: center;
+}
+
+.stat-container {
+  padding: 20px;
+  font-weight: bold;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-bottom: 6px;
+  border-bottom-style: solid;
+  border-color: #677285;
+  border-width: 1px;
+  font-size: 18px;
+  font-weight: normal;
+  height: 50px;
+}
