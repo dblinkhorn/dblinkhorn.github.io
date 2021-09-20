@@ -155,7 +155,7 @@ async function appendCurrentToDOM(weatherData, units) {
     speedUnit = 'kph';
   }
 
-  currentConditionIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${currentData.currentConditionIcon}@4x.png">`
+  currentConditionIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${currentData.currentConditionIcon}@4x.png">`
   currentTemperature.textContent = currentData.currentTemperature + tempUnit;
   currentHigh.textContent = `High Temperature: ${currentData.currentHigh}${tempUnit}`;
   currentLow.textContent = `Low Temperature: ${currentData.currentLow}${tempUnit}`;
@@ -248,7 +248,7 @@ async function appendDailyToDOM(weatherData, units) {
     const dailyCondition = document.createElement('div');
     dailyCondition.id = 'daily-condition';
     dailyCondition.classList = 'stat';
-    dailyCondition.innerHTML = `<img src="http://openweathermap.org/img/wn/${day.dailyConditionIcon}.png">`
+    dailyCondition.innerHTML = `<img src="https://openweathermap.org/img/wn/${day.dailyConditionIcon}.png">`
     + `${day.dailyCondition}`;
     // dailyCondition.textContent += day.dailyCondition;
 
