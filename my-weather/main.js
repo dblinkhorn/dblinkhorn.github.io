@@ -51,7 +51,7 @@ async function getCityCoords(city, units) {
     appendTitles();
     
     const response = await fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?q=` +
+      `https://api.openweathermap.org/data/2.5/forecast?q=` +
       `${city}&units=${units}&appid=${api_key}`
       );
     const data = await response.json();
